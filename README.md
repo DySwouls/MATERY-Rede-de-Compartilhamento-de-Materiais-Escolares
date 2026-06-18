@@ -25,8 +25,7 @@ Para esta etapa inicial, o foco foi criar uma aplicação web simples, funcional
 Como o projeto é 100% front-end nativo, você não precisa instalar nenhuma dependência pesada para rodar! 
 
 ### 🎲 Passo a Passo
-* 1- Faça o download ou clone este repositório no Visual Studio:
-     git clone 
+* 1- Faça o download ou clone este repositório no Visual Studio (precissa do git instalado no VS e PC): git clone https://github.com/DySwouls/MATERY-Rede-de-Compartilhamento-de-Materiais-Escolares.git
 * 2- Abra a pasta do projeto no seu computador e dê um duplo clique no arquivo principal index.html para abrir o site direto no seu navegador de preferência!
 
 ---
