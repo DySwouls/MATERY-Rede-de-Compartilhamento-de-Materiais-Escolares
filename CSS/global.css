@@ -1,6 +1,6 @@
  /* Configurações de Cores e Fontes do Projeto INTEIRO, ou seja alterar aqui ja mexe em tudo facilitando nossa vida */
 :root {
-    --cor-primaria: #2563eb;       /* Azul moderno para botões e links */
+    --cor-primaria: #2563eb;       /* Azul moderno para links */
     --cor-primaria-hover: #05216d; /* Azul mais escuro ao passar o mouse */
     --cor-secundaria: #10b981;     /* Verde para botões secundários */
     --cor-secundaria-hover: #06593e; /* Verde mais escuro ao passar o mouse */
