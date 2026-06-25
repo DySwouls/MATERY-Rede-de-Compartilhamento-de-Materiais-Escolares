@@ -1,1 +1,426 @@
-/* Aqui vai ser o visual da pagina de cadastro de materiais */
+/* ============================================================
+   TELA 3 — Formulário de Doação de Materiais (doar.css)
+   Estilo baseado no padrão visual do suporte.css
+   ============================================================ */
+
+/* Seção principal que centraliza o formulário na página */
+.secao-doar {
+    padding: 50px 20px 60px;
+    font-family: var(--fonte-principal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Cabeçalho da seção */
+.titulo-secao-doar {
+    text-align: center;
+    max-width: 600px;
+}
+
+.titulo-secao-doar h1 {
+    color: var(--cor-primaria-hover);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.titulo-secao-doar p {
+    color: var(--cor-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+/* Caixa principal do formulário — igual ao .cartao-suporte */
+.cartao-formulario {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 12px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.cartao-formulario h2 {
+    color: var(--cor-primaria-hover);
+    font-size: 1.4rem;
+    margin-bottom: 28px;
+    margin-top: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e4e4e7;
+}
+
+/* ---- Grupos de campo ---- */
+.grupo-campo {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.grupo-campo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-primaria-hover);
+    letter-spacing: 0.02em;
+}
+
+/* Marca campos obrigatórios */
+.grupo-campo label .obrigatorio {
+    color: #e11d48;
+    margin-left: 2px;
+}
+
+/* Inputs, selects e textarea */
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    font-family: var(--fonte-principal);
+    font-size: 0.97rem;
+    color: var(--cor-texto);
+    background-color: #fafafa;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    padding: 10px 14px;
+    width: 100%;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background-color: #ffffff;
+}
+
+.grupo-campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Seleção do estado de conservação com radio buttons estilizados */
+.grupo-conservacao {
+    margin-bottom: 20px;
+}
+
+.grupo-conservacao legend {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-primaria-hover);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.opcoes-conservacao {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.opcao-conservacao {
+    display: none; /* Esconde o radio nativo */
+}
+
+.label-conservacao {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: 2px solid #d1d5db;
+    background-color: #fafafa;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+.label-conservacao:hover {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    background-color: #eff6ff;
+}
+
+/* Quando o radio correspondente está marcado */
+.opcao-conservacao:checked + .label-conservacao {
+    border-color: var(--cor-primaria-hover);
+    background-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Área de upload de foto */
+.area-upload {
+    border: 2px dashed var(--cor-primaria-hover);
+    border-radius: 10px;
+    background-color: #f0f4ff;
+    padding: 24px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.area-upload:hover {
+    background-color: #e0eaff;
+}
+
+.area-upload .icone-upload {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.area-upload p {
+    color: var(--cor-primaria-hover);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.area-upload p span {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Input file escondido, clicado via JS */
+#input-foto {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+/* Prévia da imagem selecionada */
+.previa-foto {
+    display: none;
+    margin-top: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e4e4e7;
+}
+
+.previa-foto img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.previa-foto .nome-arquivo {
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    color: #52525b;
+    background-color: #fafafa;
+    border-top: 1px solid #e4e4e7;
+}
+
+/* Botão de publicar */
+.botao-publicar {
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+}
+
+.botao-publicar:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-1px);
+}
+
+.botao-publicar:active {
+    transform: translateY(0);
+}
+
+/* ---- Mensagem de sucesso / erro ---- */
+.mensagem-feedback {
+    display: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 16px;
+    text-align: center;
+    animation: entrar-suave 0.35s ease;
+}
+
+.mensagem-feedback.sucesso {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.mensagem-feedback.erro {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+@keyframes entrar-suave {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Seção de itens publicados pelo usuário ---- */
+.secao-meus-itens {
+    width: 100%;
+    max-width: 620px;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 12px;
+    padding: 30px 36px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.secao-meus-itens h3 {
+    color: var(--cor-primaria-hover);
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e4e4e7;
+    margin-top: 0;
+}
+
+.lista-itens-publicados {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Card de item já publicado */
+.card-item-publicado {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #fafafa;
+    border: 1.5px solid #e4e4e7;
+    border-left: 4px solid var(--cor-primaria-hover);
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: box-shadow 0.2s ease;
+    animation: entrar-suave 0.3s ease;
+}
+
+.card-item-publicado:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-item-publicado .thumb-item {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    border: 1px solid #e4e4e7;
+}
+
+.card-item-publicado .thumb-placeholder {
+    width: 54px;
+    height: 54px;
+    border-radius: 6px;
+    background-color: #e0eaff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.info-item-publicado {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-item-publicado .titulo-item {
+    font-weight: 600;
+    font-size: 0.97rem;
+    color: var(--cor-texto);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-item-publicado .meta-item {
+    font-size: 0.82rem;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.badge-conservacao {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.badge-novo     { background-color: #d1fae5; color: #065f46; }
+.badge-seminovo { background-color: #fef3c7; color: #92400e; }
+.badge-usado    { background-color: #fee2e2; color: #991b1b; }
+
+.botao-remover-item {
+    background: none;
+    border: 1.5px solid #fca5a5;
+    color: #ef4444;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.botao-remover-item:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.aviso-lista-vazia {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+/* Responsividade */
+@media (max-width: 680px) {
+    .cartao-formulario,
+    .secao-meus-itens {
+        padding: 28px 20px;
+    }
+
+    .titulo-secao-doar h1 {
+        font-size: 1.6rem;
+    }
+
+    .opcoes-conservacao {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

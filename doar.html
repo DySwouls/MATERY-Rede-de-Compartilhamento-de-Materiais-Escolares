@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MATERY - Plataforma de compartilhamento de materiais escolares">
-    <title> MATERY </title>
+    <meta name="description" content="MATERY - Publique seus materiais escolares e ajude outros estudantes. Formulário de doação simples e rápido.">
+    <title>Doar Material | MATERY</title>
     <link rel="icon" href="img-matery/favicon.jpg">
 
-<!-- conexao do html com css, usado para dizer ao html qual a base geral do site -->
+    <!-- Conexão do HTML com CSS -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/doar.css">
 </head>
 
 <body>
 
-<!-- O Topo da pagina, padrao para todas as telas -->
+<!-- O Topo da página, padrão para todas as telas -->
     <header class="menu-topo">
             <div class="logo">
                 <a href="index.html">
@@ -31,12 +31,175 @@
     </header>
 
     <main class="conteudo-da-pagina-geral">
-        <!-- Cada integrante coloca o conteúdo da sua página. -->
+
+        <section class="secao-doar">
+
+            <!-- Cabeçalho da seção -->
+            <div class="titulo-secao-doar">
+                <h1>📦 Publicar Material para Doação</h1>
+                <p>Preencha o formulário abaixo com as informações do material que deseja compartilhar. Sua contribuição faz a diferença na vida de outros estudantes!</p>
+            </div>
+
+            <!-- Formulário principal -->
+            <div class="cartao-formulario">
+                <h2>Dados do Material</h2>
+
+                <form id="formulario-doacao" novalidate>
+
+                    <!-- Nome do material -->
+                    <div class="grupo-campo">
+                        <label for="campo-nome">
+                            Nome do Material <span class="obrigatorio">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="campo-nome"
+                            name="nome"
+                            placeholder="Ex: Livro de Cálculo I — James Stewart"
+                            maxlength="120"
+                            autocomplete="off"
+                            required>
+                    </div>
+
+                    <!-- Descrição -->
+                    <div class="grupo-campo">
+                        <label for="campo-descricao">
+                            Descrição
+                        </label>
+                        <textarea
+                            id="campo-descricao"
+                            name="descricao"
+                            placeholder="Descreva o material: edição, quantidade de páginas, anotações, acessórios incluídos, etc."
+                            maxlength="500"
+                            rows="4"></textarea>
+                    </div>
+
+                    <!-- Disciplina / Categoria -->
+                    <div class="grupo-campo">
+                        <label for="campo-disciplina">
+                            Disciplina / Categoria <span class="obrigatorio">*</span>
+                        </label>
+                        <select id="campo-disciplina" name="disciplina" required>
+                            <option value="" disabled selected>Selecione uma categoria...</option>
+                            <optgroup label="📚 Livros">
+                                <option value="Livro — Exatas">Livro — Exatas (Matemática, Física, Química)</option>
+                                <option value="Livro — Humanas">Livro — Humanas (História, Geografia, Filosofia)</option>
+                                <option value="Livro — Biológicas">Livro — Biológicas (Biologia, Saúde)</option>
+                                <option value="Livro — Linguagens">Livro — Linguagens (Português, Inglês, Literatura)</option>
+                                <option value="Livro — Tecnologia">Livro — Tecnologia (Computação, Engenharia)</option>
+                                <option value="Livro — Geral">Livro — Geral / Outros</option>
+                            </optgroup>
+                            <optgroup label="🗒️ Papelaria e Cadernos">
+                                <option value="Caderno">Caderno</option>
+                                <option value="Apostila">Apostila / Material de Estudo</option>
+                                <option value="Fichário / Pasta">Fichário / Pasta</option>
+                            </optgroup>
+                            <optgroup label="🧮 Equipamentos">
+                                <option value="Calculadora">Calculadora</option>
+                                <option value="Compasso e Esquadro">Compasso e Esquadro</option>
+                                <option value="Material de Laboratório">Material de Laboratório</option>
+                                <option value="Equipamento de Informática">Equipamento de Informática</option>
+                            </optgroup>
+                            <optgroup label="🎨 Arte e Outros">
+                                <option value="Material de Arte">Material de Arte (Tintas, Pincéis)</option>
+                                <option value="Uniforme Escolar">Uniforme Escolar</option>
+                                <option value="Outros">Outros</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Estado de conservação -->
+                    <fieldset class="grupo-conservacao">
+                        <legend>Estado de Conservação <span class="obrigatorio">*</span></legend>
+                        <div class="opcoes-conservacao">
+
+                            <input
+                                class="opcao-conservacao"
+                                type="radio"
+                                id="conservacao-novo"
+                                name="conservacao"
+                                value="Novo">
+                            <label class="label-conservacao" for="conservacao-novo">
+                                ✨ Novo
+                            </label>
+
+                            <input
+                                class="opcao-conservacao"
+                                type="radio"
+                                id="conservacao-seminovo"
+                                name="conservacao"
+                                value="Seminovo">
+                            <label class="label-conservacao" for="conservacao-seminovo">
+                                👍 Seminovo
+                            </label>
+
+                            <input
+                                class="opcao-conservacao"
+                                type="radio"
+                                id="conservacao-usado"
+                                name="conservacao"
+                                value="Usado">
+                            <label class="label-conservacao" for="conservacao-usado">
+                                📖 Usado
+                            </label>
+
+                        </div>
+                    </fieldset>
+
+                    <!-- Upload de foto -->
+                    <div class="grupo-campo">
+                        <label>Foto do Material <span style="font-weight:400; color:#6b7280;">(opcional)</span></label>
+                        <div class="area-upload" id="area-upload" title="Clique para selecionar uma foto">
+                            <span class="icone-upload">📷</span>
+                            <p>
+                                Clique aqui para adicionar uma foto
+                                <span>Formatos aceitos: JPG, PNG, GIF. A imagem será otimizada automaticamente.</span>
+                            </p>
+                            <!-- Input file escondido, ativado pelo clique na área acima -->
+                            <input
+                                type="file"
+                                id="input-foto"
+                                name="foto"
+                                accept="image/*"
+                                aria-label="Selecionar foto do material">
+                        </div>
+
+                        <!-- Prévia da imagem selecionada -->
+                        <div class="previa-foto" id="previa-foto">
+                            <img id="previa-img" src="" alt="Pré-visualização da foto do material">
+                            <div class="nome-arquivo" id="previa-nome-arquivo"></div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de envio -->
+                    <button type="submit" class="botao-publicar" id="botao-publicar">
+                        🚀 Publicar Material
+                    </button>
+
+                    <!-- Mensagem de feedback (sucesso ou erro) -->
+                    <div id="mensagem-feedback" class="mensagem-feedback" role="alert" aria-live="polite"></div>
+
+                </form>
+            </div>
+
+            <!-- Lista de todos os materiais já publicados -->
+            <div class="secao-meus-itens">
+                <h3>📋 Materiais no Catálogo</h3>
+                <div class="lista-itens-publicados" id="lista-itens-publicados">
+                    <!-- Preenchido dinamicamente pelo doar.js -->
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
-<!-- Final da pagina geral para todas as telas -->
+<!-- Final da página, padrão para todas as telas -->
     <footer class="rodape">
         <p>&copy; 2026 MATERY - Projeto de Faculdade (UNIALFA). Desenvolvido para a ODS 17.</p>
     </footer>
+
+    <!-- Script da página de doação -->
+    <script src="JAVASCRIPT/doar.js"></script>
 </body>
 </html>
