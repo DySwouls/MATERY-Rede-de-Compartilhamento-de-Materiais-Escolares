@@ -5,6 +5,14 @@ style {
     font-family: Arial, sans-serif;
 }
 
+.conteudo-da-pagina-geral {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
 form {
     max-width: 400px;
     margin: 50px auto;
@@ -63,6 +71,8 @@ button {
         .formulario-cadastro {
             display: grid;
             gap: 1rem;
+            width: 100%;
+            max-width: 520px;
         }
 
         .formulario-cadastro label {
