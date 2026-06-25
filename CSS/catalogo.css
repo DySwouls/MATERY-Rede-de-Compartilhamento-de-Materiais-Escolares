@@ -1,0 +1,99 @@
+.catalogo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.catalogo h1 {
+  margin-bottom: 10px;
+  color: var(--cor-primaria-hover);
+}
+
+.lista-materiais {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.card-material {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.card-material__imagem {
+  width: 100%;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+  background-color: #f4f4f5;
+}
+
+.card-material__imagem--padrao {
+  padding: 32px;
+  object-fit: contain;
+  background-color: #ffffff;
+}
+
+.card-material__conteudo {
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.card-material__nome {
+  margin-bottom: 10px;
+  color: #2c7a4b;
+  font-size: 1.35rem;
+  overflow-wrap: anywhere;
+}
+
+.card-material p {
+  margin: 6px 0;
+}
+
+.card-material__botao-detalhes {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mensagem-catalogo-vazio {
+  grid-column: 1 / -1;
+  padding: 32px 20px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: var(--cor-texto);
+}
+
+/* Classe disponível para a futura integração com pesquisa e filtros. */
+.card-material.material-oculto {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .catalogo {
+    padding: 24px 0;
+  }
+
+  .lista-materiais {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card-material__imagem {
+    height: 180px;
+  }
+}
