@@ -69,7 +69,8 @@
     background-color: #fafafa;
     padding: 15px 20px;
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); 
 }
 
 .secao-faq h3 {
@@ -84,10 +85,10 @@
     padding: 15px 20px;
     border-radius: 8px;
     margin-bottom: 15px;
-    border-left: 2px solid var(--cor-primaria-hover); /* Dá um destaque legal na lateral da pergunta */
-    border-top: 2px solid var(--cor-primaria-hover);
-    border-right: 2px solid var(--cor-primaria-hover);
-    border-bottom: 2px solid var(--cor-primaria-hover);
+    border-left: 4px solid var(--cor-primaria-hover); /* Dá um destaque legal na lateral da pergunta */
+    border-top: 2px solid rgb(178, 176, 176);
+    border-right: 2px solid rgb(178, 176, 176);
+    border-bottom: 2px solid rgb(178, 176, 176);
 }
 
 .faq-item h4 {

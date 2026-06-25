@@ -1,0 +1,154 @@
+/* Container que junta a barra e o botão */
+.area-busca-filtros {
+    max-width: 850px;
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o botão com a barra */
+    gap: 15px;           /* Espaçamento horizontal entre a barra e o botão */
+}
+
+/* Container que envolve a barra de pesquisa */
+.container-busca {
+    max-width: 850px;
+    width: 90%;       /* Para não colar nas bordas em telas de celular */
+    margin: 30px auto; 
+    padding: 0;
+    flex: 1;
+}
+
+#input-busca {
+    width: 100%; 
+    padding: 15px 20px; 
+    font-size: 1.1rem;  
+    border: 2px solid #e4e4e7; 
+    border-radius: 12px; 
+    outline: none; 
+    box-sizing: border-box;
+}
+
+/* Efeito quando o usuário clica para digitar */
+#input-busca:focus {
+    border-color: var(--cor-primaria-hover);
+}
+
+/* Container do Filtro Suspenso */
+.container-filtro-suspenso {
+    position: relative; /* Mantém a aba ancorada logo abaixo do botão */
+}
+
+/* Estilo do botão "Filtrar" bonitão e limpo */
+.btn-principal {
+    background-color: #ffffff;
+    color: #002060; 
+    border: 2px solid #002060;
+    padding: 14px 20px; /* Altura combinando com o input */
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Impede o texto do botão de quebrar linha */
+}
+
+/* A Aba flutuante que guarda as opções */
+.aba-filtros-conteudo {
+    position: absolute;
+    top: 115px; /* 👈 Aumentamos aqui de 60px para 75px para empurrar a aba mais para baixo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 12px;
+    padding: 20px;
+    width: 750px; 
+    max-width: 90vw;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    /* Regras novas para a animação funcionar: */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.aba-filtros-conteudo.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px); /* Dá um leve efeito de subir/descer ao sumir */
+    display: block !important; /* IMPORTANTE: mantém o bloco ativo para a animação acontecer */
+}
+
+/* Regra essencial para esconder os filtros antes do clique */
+.hidden {
+    display: none !important;
+}
+
+/* Layout interno */
+.grid-filtros {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Dá mais espaço para o Tipo de Material */
+    gap: 25px;
+}
+
+.grupo-filtro-check {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.grupo-filtro-check:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide a lista de itens em 2 colunas horizontais */
+    gap: 8px 15px;
+}
+
+.titulo-filtro {
+    font-weight: 700;
+    color: #002060;
+    margin-bottom: 5px;
+}
+
+.grupo-filtro-check label {
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap; /* Evita que o texto quebre linha de forma feia */
+}
+
+/* Estilo para os subtítulos internos (📚 Livros, 🧮 Equipamentos) */
+.grupo-filtro-check small {
+    color: #666;
+    margin-top: 8px;
+    border-bottom: 1px dashed #e4e4e7;
+    padding-bottom: 2px;
+}
+
+/* Faz os títulos de seção (Tipo de Material, Livros, Papelaria) ocuparem a linha inteira */
+.titulo-filtro, 
+.grupo-filtro-check small {
+    grid-column: span 2; /* Ocupa as duas colunas para organizar os grupos */
+    font-weight: 700;
+    color: #002060;
+}
+
+.rodape-aba-filtros {
+    margin-top: 15px;
+    border-top: 1px solid #e4e4e7;
+    padding-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-salvar {
+    background-color: #002060;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
