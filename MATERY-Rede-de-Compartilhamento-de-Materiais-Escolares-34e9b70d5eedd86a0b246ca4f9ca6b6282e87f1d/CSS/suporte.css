@@ -1,0 +1,98 @@
+.secao-suporte {
+    padding: 60px 20px;
+    font-family: var(--fonte-principal);
+    display: flex;
+    justify-content: center; /* Centraliza a caixa na tela horizontalmente */
+}
+
+/* Estilo da caixa com fundo para o texto */
+.cartao-suporte {
+    background-color: #ffffff; /* Fundo branco para contrastar bem com o fundo do site */
+    border: 1px solid #e4e4e7; /* Uma borda bem fininha e sutil */
+    border-radius: 12px; /* Bordas arredondadas para um visual moderno */
+    padding: 40px 30px; /* Espaçamento interno para o texto não sufocar */
+    max-width: 600px; /* Largura máxima ideal para leitura */
+    text-align: center;
+    
+    /* Sombra suave para dar profundidade (efeito de flutuação) */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); 
+}
+
+.cartao-suporte h2 {
+    color: var(--cor-primaria-hover);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.cartao-suporte p {
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.caixa-email {
+    margin: 30px 0;
+}
+
+/* Deixa o e-mail com cara de botão destacado */
+.email-contato {
+    display: inline-block;
+    background-color: #f4f4f5;
+    color: var(--cor-primaria-hover);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px dashed var(--cor-primaria-hover);
+    transition: all 0.3s ease;
+}
+
+.email-contato:hover {
+    background-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    border-style: solid;
+}
+
+.prazo-resposta {
+    font-size: 0.9rem !important;
+    color: #3e3d3d !important;
+    font-style: italic;
+}
+
+.secao-faq {
+    max-width: 850px;
+    margin: 0px auto 0 auto;
+    text-align: left; /* Deixa as perguntas alinhadas à esquerda para facilitar a leitura */
+    border-top: 1px solid #e4e4e7;
+    padding-top: 30px;
+}
+
+.secao-faq h3 {
+    color: var(--cor-primaria-hover);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center; /* Só o título do FAQ fica centralizado */
+}
+
+.faq-item {
+    background-color: #fafafa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 8px solid var(--cor-primaria-hover); /* Dá um destaque legal na lateral da pergunta */
+}
+
+.faq-item h4 {
+    color: #27272a;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.faq-item p {
+    color: #52525b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}

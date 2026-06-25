@@ -1,0 +1,164 @@
+ /* Configurações de Cores e Fontes do Projeto INTEIRO, ou seja alterar aqui ja mexe em tudo facilitando nossa vida */
+:root {
+    --cor-primaria: #2563eb;       /* Azul moderno para links */
+    --cor-primaria-hover: #05216d; /* Azul mais escuro ao passar o mouse */
+    --cor-secundaria: #10b981;     /* Verde para botões secundários */
+    --cor-secundaria-hover: #06593e; /* Verde mais escuro ao passar o mouse */
+    --cor-fundo: #949393;          /* Cinza bem claro para o fundo do site */
+    --cor-texto: #292c30;          /* Cinza escuro para leitura confortável */
+    --cor-menu: #ffffff;           /* Branco para blocos e cabeçalho */
+    --cor-rodape: #0f172a;         /* Cor para o fundo do rodape */
+    --fonte-principal: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+/* Reset básico para evitar falhas do layout geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estrutura Básica, apenas para generalização e testar umas coisas */
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Define um tamanho ideal para o logo no menu */
+.logo img {
+    height: 60px; /* Altere a altura como preferir para ajustar ao menu */
+    display: block; /* Remove espaços em branco extras embaixo da imagem */
+}
+
+/* Cabeçalho e Menu, padrao para todas as telas */
+.menu-topo {
+    background-color: var(--cor-menu);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Estilo simples para os links do menu não ficarem azuis sublinhados */
+.menu-topo a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+/* Estilo simples para os links do menu não ficarem azuis sublinhados */
+.menu-topo .logo a {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 0;
+}
+
+/* Estilização da área dos links (nav) */
+.menu-topo nav {
+    display: flex;
+    gap: 30px; /* Cria um espaçamento igual entre os links */
+    align-items: center;
+}
+
+/* Estilo geral de cada link da nav */
+.menu-topo nav a {
+    text-decoration: none;
+    color: var(--cor-texto); /* Usa a cor de texto confortável que você definiu */
+    font-family: var(--fonte-principal);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px; /* Deixa os cantos arredondados para o efeito de fundo */
+    transition: all 0.3s ease; /* Faz o efeito do mouse aparecer suavemente */
+    display: inline-block; /* Garante que o padding funcione perfeitamente */
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.menu-topo nav a:hover {
+    color: #ffffff !important; /* Texto fica branco */
+    background-color: var(--cor-primaria-hover); /* Fundo ganha o azul moderno do projeto */
+}
+
+/* Estilo especial para destacar a página que está aberta */
+.menu-topo nav a.link-pagina-atual {
+    color: var(--cor-primaria-hover);
+    font-weight: bold;
+    border-bottom: 2px solid var(--cor-primaria-hover); /* Cria uma barrinha embaixo do link atual */
+    border-radius: 0; /* Remove o arredondamento na página atual para combinar com a barrinha */
+    padding: 8px 4px; /* Ajusta o espaçamento para a barrinha ficar bonita */
+}
+
+.conteudo-da-pagina-geral {
+    flex: 1; 
+    padding: 2rem; /* Dá um espaço legal para o conteúdo não colar nas bordas */
+}
+
+/* Estilização do Rodapé */
+.rodape {
+    background-color: var(--cor-rodape);
+    color: #ffffff; /* Texto branco para dar contraste com o fundo escuro */
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: auto; /* Truque mágico para prender o rodapé no fim da página */
+    font-size: 0.9rem;
+}
+
+/* Botão Primário (Azul) - Ótimo para enviar formulários ou pesquisar */
+.botao-primario-geral {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.botao-primario-geral:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Botão Secundário (Verde) - Ótimo para o botão de "Tenho Interesse" nos cards */
+.botao-secundario-geral {
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.botao-secundario-geral:hover {
+    background-color: var(--cor-secundaria-hover);
+}
+
+/* Isso é so para o Menu no topo nao ficar estranho no celular... */
+@media (max-width: 768px) {
+    .menu-topo {
+        flex-direction: column;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura em telas muito grandes */
+    margin: 0 auto;    /* Centraliza o bloco na tela */
+    padding: 0 20px;   /* Evita que o texto cole na lateral em celulares */
+}

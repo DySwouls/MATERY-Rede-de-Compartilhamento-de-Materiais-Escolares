@@ -1,0 +1,122 @@
+style {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+button {
+    display: flex; 
+    justify-content: space-between;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #001eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+     .secao-cadastro {
+            min-height: calc(100vh - 220px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .cartao-cadastro {
+            width: 100%;
+            max-width: 520px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        .cartao-cadastro h2 {
+            margin-bottom: 0.75rem;
+            color: var(--cor-primaria);
+            font-size: 2rem;
+        }
+
+        .cartao-cadastro p {
+            margin-bottom: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .formulario-cadastro {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .formulario-cadastro label {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .formulario-cadastro input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            font-size: 1rem;
+            color: #0f172a;
+        }
+
+        .formulario-cadastro input:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+        }
+
+        .formulario-cadastro button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .cadastro-aviso {
+            margin-top: 0.5rem;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .cadastro-aviso a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .botoes-direcionamento {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        .botao-cadastro {
+            width: 100%;
+            border-radius: 12px;
+            padding: 1rem;
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 0.25s ease;
+        }
