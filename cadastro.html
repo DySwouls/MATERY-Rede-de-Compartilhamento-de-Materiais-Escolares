@@ -3,55 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MATERY - Plataforma de compartilhamento de materiais escolares">
-    <title> MATERY </title>
+    <meta name="description" content="Crie sua conta no MATERY para doar, solicitar e compartilhar materiais escolares.">
+    <title>Cadastro | MATERY</title>
     <link rel="icon" href="img-matery/favicon.jpg">
 
-<!-- conexao do html com css, usado para dizer ao html qual a base geral do site -->
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/cadastro.css">
 </head>
 
 <body>
-
-<!-- O Topo da pagina, padrao para todas as telas -->
     <header class="menu-topo">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="img-matery/logo.png" alt="Logo MATERY">
-                </a>
-            </div>
-        
+        <div class="logo">
+            <a href="index.html">
+                <img src="img-matery/logo.png" alt="Logo MATERY">
+            </a>
+        </div>
+
         <nav>
-            <a href="index.html" class="link-pagina-atual">Início</a> 
+            <a href="index.html">Início</a>
             <a href="doar.html">Doar Material</a>
             <a href="catalogo.html">Catálogo</a>
             <a href="suporte.html">Suporte</a>
         </nav>
     </header>
 
-    <main class="conteudo-da-pagina-geral">
-        <form class="formulario-cadastro" id="form-cadastro" action="index.html" method="get">
-            
-            <h2>CADASTRO</h2>
-            <label for="nome">Nome completo:</label>
-            <input type="text" id="nome" name="nome" required>
+    <main class="conteudo-da-pagina-geral pagina-cadastro">
+        <section class="cadastro-layout" aria-labelledby="titulo-cadastro">
+            <aside class="cadastro-apresentacao">
+                <p class="etiqueta-cadastro">Conta MATERY</p>
+                <h1 id="titulo-cadastro">Participe da rede de compartilhamento escolar.</h1>
+                <p>
+                    Crie sua conta para publicar materiais, demonstrar interesse em doações e ajudar outros
+                    estudantes a terem acesso a recursos educacionais.
+                </p>
 
-            <label for="telefone">Telefone/WhatsApp:</label>
-            <input type="tel" id="telefone" name="telefone" required placeholder="(99) 99999-9999">
+                <div class="cadastro-beneficios" aria-label="Benefícios da conta">
+                    <div>
+                        <span>01</span>
+                        <strong>Doe materiais</strong>
+                        <small>Publique livros, apostilas, cadernos e itens escolares em poucos passos.</small>
+                    </div>
+                    <div>
+                        <span>02</span>
+                        <strong>Solicite itens</strong>
+                        <small>Use seus dados para registrar interesse e combinar a retirada com o doador.</small>
+                    </div>
+                    <div>
+                        <span>03</span>
+                        <strong>Fortaleça a ODS 17</strong>
+                        <small>Ajude a construir uma comunidade mais colaborativa e acessível.</small>
+                    </div>
+                </div>
+            </aside>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <section class="cadastro-card" aria-label="Formulário de cadastro">
+                <div class="cadastro-cabecalho">
+                    <p class="etiqueta-cadastro">Criar acesso</p>
+                    <h2>Cadastro</h2>
+                    <p>Preencha os dados abaixo para entrar no MATERY.</p>
+                </div>
 
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
-            <button type="submit">Entrar</button>
-        </form>
+                <form class="formulario-cadastro" id="form-cadastro" novalidate>
+                    <div class="grupo-campo campo-inteiro">
+                        <label for="nome">Nome completo <span>*</span></label>
+                        <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="curso">Curso ou série</label>
+                        <input type="text" id="curso" name="curso" placeholder="Ex.: Engenharia de Software">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" autocomplete="address-level2" placeholder="Ex.: Goiânia">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="telefone">WhatsApp <span>*</span></label>
+                        <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(99) 99999-9999" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="email">E-mail <span>*</span></label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="senha">Senha <span>*</span></label>
+                        <input type="password" id="senha" name="senha" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="confirmar-senha">Confirmar senha <span>*</span></label>
+                        <input type="password" id="confirmar-senha" name="confirmarSenha" autocomplete="new-password" minlength="6" required>
+                    </div>
+
+                    <label class="campo-termos campo-inteiro" for="termos">
+                        <input type="checkbox" id="termos" name="termos" required>
+                        <span>Confirmo que meus dados poderão ser usados para contato dentro do protótipo MATERY.</span>
+                    </label>
+
+                    <button class="botao-primario-geral botao-cadastro campo-inteiro" type="submit">Criar conta</button>
+
+                    <div id="mensagem-cadastro" class="mensagem-cadastro campo-inteiro" role="alert" aria-live="polite"></div>
+                </form>
+
+                <p class="cadastro-aviso">
+                    Já tem uma conta? <a href="login.html">Entrar no MATERY</a>
+                </p>
+            </section>
+        </section>
     </main>
 
-<!-- Final da pagina geral para todas as telas -->
     <footer class="rodape">
         <p>&copy; 2026 MATERY - Projeto de Faculdade (UNIALFA). Desenvolvido para a ODS 17.</p>
     </footer>
+
+    <script src="JAVASCRIPT/cadastro.js"></script>
 </body>
 </html>
