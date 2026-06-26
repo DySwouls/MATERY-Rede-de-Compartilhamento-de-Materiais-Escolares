@@ -392,6 +392,24 @@ body {
     padding: 1.7rem;
 }
 
+/* Centraliza o diálogo na tela */
+.modal-interesse {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 92vw;
+}
+
+@media (max-width: 520px) {
+    .modal-interesse {
+        width: calc(100% - 2rem);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
 .modal-interesse h2 {
     color: var(--cor-rodape);
     font-size: 1.7rem;
