@@ -270,6 +270,7 @@ formulario.addEventListener('submit', async function (evento) {
     const nome        = document.getElementById('campo-nome').value.trim();
     const descricao   = document.getElementById('campo-descricao').value.trim();
     const disciplina  = document.getElementById('campo-disciplina').value;
+    const cidade      = document.getElementById('campo-cidade').value;
     const conservacao = document.querySelector('input[name="conservacao"]:checked');
 
     // Validações
@@ -285,6 +286,12 @@ formulario.addEventListener('submit', async function (evento) {
         return;
     }
 
+    if (!cidade) {
+        exibirMensagem('Por favor, selecione a cidade.', 'erro');
+        document.getElementById('campo-cidade').focus();
+        return;
+    }
+
     if (!conservacao) {
         exibirMensagem('Por favor, selecione o estado de conservação.', 'erro');
         return;
@@ -292,13 +299,14 @@ formulario.addEventListener('submit', async function (evento) {
 
     // Monta o objeto do item de doação
     const novoItem = {
-        id:          gerarId(),
-        nome:        nome,
-        descricao:   descricao,
-        disciplina:  disciplina,
-        conservacao: conservacao.value,
-        foto:        imagemBase64 || '',
-        dataPublicacao: new Date().toLocaleDateString('pt-BR'),
+        id:             gerarId(),
+        nome:           nome,
+        descricao:      descricao,
+        disciplina:     disciplina,
+        conservacao:    conservacao.value,
+        cidade:         cidade,
+        foto:           imagemBase64 || '',
+        dataPublicacao: new Date().toISOString().slice(0, 10),
     };
 
     // Salva no LocalStorage

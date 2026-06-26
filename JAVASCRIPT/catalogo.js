@@ -7,8 +7,10 @@ const materiaisBase = [
         cidade: "Goiânia",
         bairro: "Setor Bueno",
         doador: "Mariana",
+        telefone: "+55 62 98123-4567",
         data: "2026-06-18",
-        descricao: "Livro com exercícios resolvidos e pequenos sinais de uso nas bordas."
+        descricao: "Livro com exercícios resolvidos e pequenos sinais de uso nas bordas.",
+        foto: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80"
     },
     {
         id: "apostila-enem",
@@ -18,8 +20,10 @@ const materiaisBase = [
         cidade: "Aparecida de Goiânia",
         bairro: "Jardim Luz",
         doador: "Rafael",
+        telefone: "+55 62 99222-3344",
         data: "2026-06-20",
-        descricao: "Conteúdo de ciências humanas, matemática e redação em ótimo estado."
+        descricao: "Conteúdo de ciências humanas, matemática e redação em ótimo estado.",
+        foto: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80"
     },
     {
         id: "mochila-azul",
@@ -29,8 +33,10 @@ const materiaisBase = [
         cidade: "Goiânia",
         bairro: "Campinas",
         doador: "Letícia",
+        telefone: "+55 62 98888-7766",
         data: "2026-06-12",
-        descricao: "Mochila resistente, com dois compartimentos e zíper funcionando."
+        descricao: "Mochila resistente, com dois compartimentos e zíper funcionando.",
+        foto: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&q=80"
     },
     {
         id: "cadernos-universitarios",
@@ -40,8 +46,10 @@ const materiaisBase = [
         cidade: "Trindade",
         bairro: "Centro",
         doador: "Gustavo",
+        telefone: "+55 62 99777-6655",
         data: "2026-06-22",
-        descricao: "Três cadernos sem uso, com 10 matérias cada."
+        descricao: "Três cadernos sem uso, com 10 matérias cada.",
+        foto: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=500&q=80"
     },
     {
         id: "livro-portugues",
@@ -51,8 +59,10 @@ const materiaisBase = [
         cidade: "Goiânia",
         bairro: "Jardim América",
         doador: "Ana",
+        telefone: "+55 62 99444-5566",
         data: "2026-06-15",
-        descricao: "Livro indicado para ensino médio, sem páginas rasgadas."
+        descricao: "Livro indicado para ensino médio, sem páginas rasgadas.",
+        foto: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80"
     },
     {
         id: "estojo-canetas",
@@ -62,8 +72,10 @@ const materiaisBase = [
         cidade: "Senador Canedo",
         bairro: "Vila Galvão",
         doador: "Carlos",
+        telefone: "+55 62 99333-2211",
         data: "2026-06-10",
-        descricao: "Estojo simples com canetas azuis, lápis, borracha e apontador."
+        descricao: "Estojo simples com canetas azuis, lápis, borracha e apontador.",
+        foto: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=80"
     }
 ];
 
@@ -72,7 +84,8 @@ const chavesLocalStorage = [
     "materiaisMatery",
     "materiaisDoacao",
     "doacoes",
-    "doacoesMatery"
+    "doacoesMatery",
+    "matery_items"
 ];
 
 const elementos = {
@@ -131,13 +144,14 @@ function carregarMateriaisSalvos() {
                     materiaisSalvos.push({
                         id: item.id || `${chave}-${indice}`,
                         titulo: item.titulo || item.nome || item.material || "Material escolar",
-                        categoria: item.categoria || item.tipo || "Materiais gerais",
+                        categoria: item.categoria || item.tipo || item.disciplina || "Materiais gerais",
                         estado: item.estado || item.conservacao || "Bom",
                         cidade: item.cidade || "Cidade não informada",
                         bairro: item.bairro || item.local || "Local a combinar",
                         doador: item.doador || item.nomeDoador || item.responsavel || "Doador MATERY",
-                        data: item.data || item.criadoEm || new Date().toISOString().slice(0, 10),
-                        descricao: item.descricao || item.observacao || "Material cadastrado pela comunidade."
+                        data: item.data || item.dataPublicacao || item.criadoEm || new Date().toISOString().slice(0, 10),
+                        descricao: item.descricao || item.observacao || "Material cadastrado pela comunidade.",
+                        foto: item.foto || ''
                     });
                 });
             }
@@ -224,6 +238,13 @@ function criarCard(material) {
     const card = document.createElement("article");
     card.className = "card-material";
     card.innerHTML = `
+        ${material.foto ? `
+            <div class="card-imagem">
+                <img src="${escaparHtml(material.foto)}" alt="Foto de ${escaparHtml(material.titulo)}">
+            </div>
+        ` : `
+            <div class="card-imagem-placeholder">📦</div>
+        `}
         <div class="card-cabecalho">
             <span class="card-categoria">${escaparHtml(material.categoria)}</span>
             <span class="card-estado">${escaparHtml(material.estado)}</span>
@@ -237,8 +258,7 @@ function criarCard(material) {
             <div><span>Publicado</span><strong>${formatarData(material.data)}</strong></div>
         </div>
         <div class="card-acoes">
-            <button class="botao-secundario-geral" type="button" data-interesse="${escaparHtml(material.id)}">Tenho interesse</button>
-            <a class="botao-primario-geral" href="doar.html">Doar também</a>
+            <button class="botao-primario-geral" type="button" data-interesse="${escaparHtml(material.id)}">Tenho interesse</button>
         </div>
     `;
 
@@ -258,12 +278,26 @@ function renderizarMateriais() {
 }
 
 function abrirModal(material) {
+    // Formata número para wa.me (apenas dígitos, remove sinais)
+    const telefoneRaw = material.telefone || '';
+    const telefoneDigits = telefoneRaw.replace(/\D+/g, '');
+
+    const mensagemPadrao = `Olá ${material.doador}, tenho interesse no material "${material.titulo}".`;
+    const whatsappUrl = telefoneDigits
+        ? `https://wa.me/${telefoneDigits}?text=${encodeURIComponent(mensagemPadrao)}`
+        : null;
+
     elementos.modalConteudo.innerHTML = `
         <div class="detalhe-material">
             <p><strong>Material:</strong> ${escaparHtml(material.titulo)}</p>
             <p><strong>Doador:</strong> ${escaparHtml(material.doador)}</p>
             <p><strong>Retirada:</strong> ${escaparHtml(material.bairro)} - ${escaparHtml(material.cidade)}</p>
             <p><strong>Conservação:</strong> ${escaparHtml(material.estado)}</p>
+            ${telefoneRaw ? `<p><strong>Telefone:</strong> <a href="tel:${escaparHtml(telefoneRaw)}">${escaparHtml(telefoneRaw)}</a></p>` : ''}
+        </div>
+        <div class="modal-acoes">
+            ${whatsappUrl ? `<a class="botao-whatsapp" href="${whatsappUrl}" target="_blank" rel="noopener">💬 Conversar no WhatsApp</a>` : `<button class="botao-secundario-geral" disabled>Telefone indisponível</button>`}
+            <button class="botao-secundario-geral" data-fechar>Voltar</button>
         </div>
     `;
 
@@ -311,6 +345,18 @@ elementos.modal.addEventListener("close", () => {
     }
 
     elementos.modal.returnValue = "";
+});
+
+// Fecha o modal quando o botão com atributo data-fechar for clicado
+elementos.modalConteudo.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-fechar]');
+    if (!btn) return;
+
+    if (typeof elementos.modal.close === 'function') {
+        elementos.modal.close();
+    } else {
+        elementos.modal.returnValue = '';
+    }
 });
 
 configurarFiltros();
