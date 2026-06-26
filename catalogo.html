@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MATERY - Plataforma de compartilhamento de materiais escolares">
-    <title> MATERY </title>
+    <title>Catálogo | MATERY</title>
     <link rel="icon" href="img-matery/favicon.jpg">
 
-<!-- conexao do html com css, usado para dizer ao html qual a base geral do site -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/catalogo.css">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/catalogo.css">
 </head>
 
 <body>
-
-<!-- O Topo da pagina, padrao para todas as telas -->
     <header class="menu-topo">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="img-matery/logo.png" alt="Logo MATERY">
-                </a>
-            </div>
-        
+        <div class="logo">
+            <a href="index.html">
+                <img src="img-matery/logo.png" alt="Logo MATERY">
+            </a>
+        </div>
+
         <nav>
-            <a href="index.html">Início</a> 
+            <a href="index.html">Início</a>
             <a href="doar.html">Doar Material</a>
             <a href="catalogo.html" class="link-pagina-atual">Catálogo</a>
             <a href="suporte.html">Suporte</a>
@@ -31,12 +28,106 @@
     </header>
 
     <main class="conteudo-da-pagina-geral">
-        <!-- Cada integrante coloca o conteúdo da sua página. -->
+        <section class="catalogo-topo">
+            <div>
+                <p class="catalogo-etiqueta">Materiais disponíveis</p>
+                <h1>Catálogo MATERY</h1>
+                <p class="catalogo-resumo">
+                    Encontre livros, apostilas, cadernos e outros materiais escolares compartilhados pela comunidade.
+                </p>
+            </div>
+
+            <div class="painel-indicadores" aria-label="Resumo do catálogo">
+                <div>
+                    <strong id="totalMateriais">0</strong>
+                    <span>materiais</span>
+                </div>
+                <div>
+                    <strong id="totalCategorias">0</strong>
+                    <span>categorias</span>
+                </div>
+                <div>
+                    <strong id="totalCidades">0</strong>
+                    <span>cidades</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="catalogo-filtros" aria-label="Filtros do catálogo">
+            <div class="campo-busca">
+                <label for="buscaMaterial">Buscar material</label>
+                <input type="search" id="buscaMaterial" placeholder="Ex.: matemática, mochila, apostila">
+            </div>
+
+            <div class="grupo-filtros">
+                <label for="filtroCategoria">Categoria</label>
+                <select id="filtroCategoria">
+                    <option value="todos">Todas</option>
+                </select>
+            </div>
+
+            <div class="grupo-filtros">
+                <label for="filtroEstado">Conservação</label>
+                <select id="filtroEstado">
+                    <option value="todos">Todos</option>
+                    <option value="Novo">Novo</option>
+                    <option value="Ótimo">Ótimo</option>
+                    <option value="Bom">Bom</option>
+                    <option value="Usado">Usado</option>
+                </select>
+            </div>
+
+            <div class="grupo-filtros">
+                <label for="filtroCidade">Cidade</label>
+                <select id="filtroCidade">
+                    <option value="todos">Todas</option>
+                </select>
+            </div>
+
+            <div class="grupo-filtros">
+                <label for="ordenacao">Ordenar</label>
+                <select id="ordenacao">
+                    <option value="recentes">Mais recentes</option>
+                    <option value="titulo">Nome A-Z</option>
+                    <option value="categoria">Categoria</option>
+                </select>
+            </div>
+
+            <button class="botao-limpar" id="limparFiltros" type="button">Limpar</button>
+        </section>
+
+        <section class="catalogo-listagem" aria-labelledby="resultadoTitulo">
+            <div class="linha-resultado">
+                <h2 id="resultadoTitulo">Materiais encontrados</h2>
+                <span id="textoResultado">0 itens</span>
+            </div>
+
+            <div class="grade-materiais" id="listaMateriais"></div>
+
+            <div class="estado-vazio" id="estadoVazio" hidden>
+                <strong>Nenhum material encontrado</strong>
+                <p>Ajuste a busca ou limpe os filtros para ver mais opções.</p>
+            </div>
+        </section>
     </main>
 
-<!-- Final da pagina geral para todas as telas -->
+    <dialog class="modal-interesse" id="modalInteresse" aria-labelledby="modalTitulo">
+        <form method="dialog">
+            <button class="modal-fechar" type="submit" aria-label="Fechar">×</button>
+            <p class="catalogo-etiqueta">Solicitação</p>
+            <h2 id="modalTitulo">Tenho interesse</h2>
+            <div id="modalConteudo"></div>
+            <menu>
+                <button class="botao-primario-geral" value="confirmar">Confirmar interesse</button>
+                <button class="botao-secundario-geral" value="cancelar">Voltar</button>
+            </menu>
+        </form>
+    </dialog>
+
     <footer class="rodape">
         <p>&copy; 2026 MATERY - Projeto de Faculdade (UNIALFA). Desenvolvido para a ODS 17.</p>
     </footer>
+
+    <script src="JAVASCRIPT/catalogo.js"></script>
 </body>
 </html>
