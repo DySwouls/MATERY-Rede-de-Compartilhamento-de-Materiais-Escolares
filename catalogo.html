@@ -27,6 +27,64 @@
         </nav>
     </header>
 
+    <!-- Barra de Pesquisa do Catálogo -->
+<div class="area-busca-filtros">
+
+    <div class="container-busca">
+        <input type="text" 
+        id="input-busca" 
+        placeholder="🔍 Digite o nome do livro ou material escolar...">
+    </div>
+
+    <div class="container-filtro-suspenso">
+        <button type="button" id="btn-abrir-filtros" class="btn-principal">
+            Filtrar <span class="seta-filtro">▼</span>
+        </button>
+    </div>
+
+    <div id="aba-filtros" class="aba-filtros-conteudo hidden">
+        <div class="grid-filtros">
+            <div class="grupo-filtro-check">
+                <span class="titulo-filtro">📌 Tipo de Material</span>
+            
+                <small style="color: #666; font-weight: bold; margin-top: 5px;">📚 Livros</small>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Exatas"> Livro — Exatas</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Humanas"> Livro — Humanas</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Biológicas"> Livro — Biológicas</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Linguagens"> Livro — Linguagens</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Tecnologia"> Livro — Tecnologia</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Livro — Geral"> Livro — Geral / Outros</label>
+            
+                <small style="color: #666; font-weight: bold; margin-top: 5px;">🗒️ Papelaria</small>
+                <label><input type="checkbox" class="filtro-categoria" value="Caderno"> Caderno</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Apostila"> Apostila / Estudo</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Fichário / Pasta"> Fichário / Pasta</label>
+            
+                <small style="color: #666; font-weight: bold; margin-top: 5px;">🧮 Equipamentos e Arte</small>
+                <label><input type="checkbox" class="filtro-categoria" value="Calculadora"> Calculadora</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Compasso e Esquadro"> Compasso / Esquadro</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Material de Laboratório"> Mat. Laboratório</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Equipamento de Informática"> Mat. Informática</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Material de Arte"> Material de Arte</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Uniforme Escolar"> Uniforme Escolar</label>
+                <label><input type="checkbox" class="filtro-categoria" value="Outros"> Outros</label>
+            </div>
+
+            <div class="grupo-filtro-check">
+                <span class="titulo-filtro">✨ Conservação</span>
+                <label><input type="checkbox" class="filtro-conservacao" value="Novo"> ✨ Novo</label>
+                <label><input type="checkbox" class="filtro-conservacao" value="Seminovo"> 👍 Seminovo</label>
+                <label><input type="checkbox" class="filtro-conservacao" value="Usado"> 📖 Usado</label>
+            </div>
+    </div>
+
+    <div class="rodape-aba-filtros">
+        <button type="button" id="btn-salvar-filtros" class="btn-salvar">Salvar e Aplicar</button>
+    </div>
+</div>
+
+</div>
+
     <main class="conteudo-da-pagina-geral">
         <section class="catalogo-topo">
             <div>

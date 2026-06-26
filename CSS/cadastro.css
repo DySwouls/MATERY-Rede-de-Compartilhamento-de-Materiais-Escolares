@@ -39,7 +39,7 @@ button {
     font-size: 16px;
 }
 
-     .secao-login {
+     .secao-cadastro {
             min-height: calc(100vh - 220px);
             display: flex;
             align-items: center;
@@ -47,7 +47,7 @@ button {
             padding: 2rem 0;
         }
 
-        .cartao-login {
+        .cartao-cadastro {
             width: 100%;
             max-width: 520px;
             background-color: #ffffff;
@@ -56,31 +56,31 @@ button {
             box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
         }
 
-        .cartao-login h2 {
+        .cartao-cadastro h2 {
             margin-bottom: 0.75rem;
             color: var(--cor-primaria);
             font-size: 2rem;
         }
 
-        .cartao-login p {
+        .cartao-cadastro p {
             margin-bottom: 1.5rem;
             color: #475569;
             line-height: 1.7;
         }
 
-        .formulario-login {
+        .formulario-cadastro {
             display: grid;
             gap: 1rem;
             width: 100%;
             max-width: 520px;
         }
 
-        .formulario-login label {
+        .formulario-cadastro label {
             font-weight: 600;
             color: #334155;
         }
 
-        .formulario-login input {
+        .formulario-cadastro input {
             width: 100%;
             padding: 1rem;
             border: 1px solid #cbd5e1;
@@ -90,12 +90,12 @@ button {
             color: #0f172a;
         }
 
-        .formulario-login input:focus {
+        .formulario-cadastro input:focus {
             outline: none;
             border-color: var(--cor-primaria);
         }
 
-        .formulario-login button {
+        .formulario-cadastro button {
             width: 100%;
             padding: 1rem;
             border-radius: 12px;
@@ -104,13 +104,13 @@ button {
             cursor: pointer;
         }
 
-        .login-aviso {
+        .cadastro-aviso {
             margin-top: 0.5rem;
             color: #64748b;
             font-size: 0.95rem;
         }
 
-        .login-aviso a {
+        .cadastro-aviso a {
             color: var(--cor-primaria);
             text-decoration: none;
             font-weight: 700;
@@ -122,7 +122,7 @@ button {
             margin-top: 1.5rem;
         }
 
-        .botao-login {
+        .botao-cadastro {
             width: 100%;
             border-radius: 12px;
             padding: 1rem;

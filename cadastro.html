@@ -8,8 +8,8 @@
     <link rel="icon" href="img-matery/favicon.jpg">
 
 <!-- conexao do html com css, usado para dizer ao html qual a base geral do site -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/cadastro.css">
 </head>
 
 <body>
@@ -21,28 +21,31 @@
                     <img src="img-matery/logo.png" alt="Logo MATERY">
                 </a>
             </div>
-          <nav>
+        
+        <nav>
             <a href="index.html" class="link-pagina-atual">Início</a> 
             <a href="doar.html">Doar Material</a>
             <a href="catalogo.html">Catálogo</a>
             <a href="suporte.html">Suporte</a>
-        </nav>   
+        </nav>
     </header>
 
     <main class="conteudo-da-pagina-geral">
-            <form class="formulario-login" action="catalogo.html" method="get">
-    
-    <h2>LOGIN</h2>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="senha">Senha:</label>
+        <form class="formulario-cadastro" id="form-cadastro" action="index.html" method="get">
+            
+            <h2>CADASTRO</h2>
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nome" required>
 
-        <input type="password" id="senha" name="senha" required>
-        <button type="submit">Entrar</button>
- 
-    <div>
-        <label for="cadastro">Não tem uma conta? <a href="cadastro.html"> Cadastre-se </a> </label>  
-    </div>
+            <label for="telefone">Telefone/WhatsApp:</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="(99) 99999-9999">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <button type="submit">Entrar</button>
         </form>
     </main>
 
