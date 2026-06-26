@@ -17,17 +17,14 @@ const CHAVE_ITEMS = 'matery_items';       // Chave no LocalStorage para materiai
 const CHAVE_USUARIO = 'matery_currentUser'; // Chave do usuário logado (futuro uso)
 
 /* ============================================================
-   GUARDA DE ROTA (comentado — liberado conforme solicitado)
-   Descomente o bloco abaixo quando a autenticação estiver pronta.
+   GUARDA DE ROTA — redireciona para login se não estiver logado
    ============================================================ */
-/*
 (function verificarAutenticacao() {
     const usuarioLogado = localStorage.getItem(CHAVE_USUARIO);
     if (!usuarioLogado) {
         window.location.href = 'login.html';
     }
 })();
-*/
 
 /* ============================================================
    UTILITÁRIOS DE LOCALSTORAGE
