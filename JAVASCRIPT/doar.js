@@ -2,12 +2,13 @@
  * doar.js — Lógica da Tela 3: Formulário de Doação de Materiais
  *
  * Responsabilidades:
- *  1. (Futuro) Guarda de rota: verificar matery_currentUser no LocalStorage.
+ *  1. Guarda de rota: verificar matery_currentUser no LocalStorage.
  *  2. Capturar o submit do formulário e construir o objeto de item.
- *  3. Salvar o item no array "matery_items" do LocalStorage.
- *  4. Renderizar a lista de itens já publicados (todos os cadastrados).
- *  5. Permitir remover um item da lista.
- *  6. Tratar o upload de foto com a FileReader API (base64 reduzido).
+ *  3. Vincular o item ao usuário logado (doadorId, doador, telefone).
+ *  4. Salvar o item no array "matery_items" do LocalStorage.
+ *  5. Renderizar apenas os itens publicados pelo usuário atual.
+ *  6. Permitir remover somente itens próprios do usuário logado.
+ *  7. Tratar o upload de foto com a FileReader API (base64 reduzido).
  */
 
 /* ============================================================
@@ -17,8 +18,7 @@ const CHAVE_ITEMS = 'matery_items';       // Chave no LocalStorage para materiai
 const CHAVE_USUARIO = 'matery_currentUser'; // Chave do usuário logado (futuro uso)
 
 /* ============================================================
-   GUARDA DE ROTA (comentado — liberado conforme solicitado)
-   Descomente o bloco abaixo quando a autenticação estiver pronta.
+   GUARDA DE ROTA — redireciona para login se não estiver logado
    ============================================================ */
 (function verificarAutenticacao() {
     const usuarioLogado = localStorage.getItem(CHAVE_USUARIO);
@@ -26,6 +26,22 @@ const CHAVE_USUARIO = 'matery_currentUser'; // Chave do usuário logado (futuro 
         window.location.replace('login.html?redirect=doar.html');
     }
 })();
+
+/* ============================================================
+   USUÁRIO ATUAL
+   ============================================================ */
+
+/**
+ * Retorna o objeto do usuário logado, ou null se não houver sessão.
+ * @returns {Object|null}
+ */
+function obterUsuarioAtual() {
+    try {
+        return JSON.parse(localStorage.getItem(CHAVE_USUARIO)) || null;
+    } catch {
+        return null;
+    }
+}
 
 /* ============================================================
    UTILITÁRIOS DE LOCALSTORAGE
@@ -162,16 +178,22 @@ function gerarBadgeConservacao(estado) {
  * Renderiza todos os itens salvos no LocalStorage na lista da página.
  */
 function renderizarListaItems() {
-    const items = carregarItems();
+    const todosItems = carregarItems();
+    const usuario = obterUsuarioAtual();
     listaEl.innerHTML = ''; // Limpa a lista antes de redesenhar
 
-    if (items.length === 0) {
-        listaEl.innerHTML = '<p class="aviso-lista-vazia">Nenhum material publicado ainda. Seja o primeiro! 📦</p>';
+    // Filtra apenas os itens do usuário logado
+    const meuItems = usuario
+        ? todosItems.filter(function (item) { return item.doadorId === usuario.id; })
+        : [];
+
+    if (meuItems.length === 0) {
+        listaEl.innerHTML = '<p class="aviso-lista-vazia">Você ainda não publicou nenhum material. 📦</p>';
         return;
     }
 
     // Exibe os itens mais recentes primeiro
-    const itemsOrdenados = [...items].reverse();
+    const itemsOrdenados = [...meuItems].reverse();
 
     itemsOrdenados.forEach(function (item) {
         const card = document.createElement('div');
@@ -219,12 +241,21 @@ function renderizarListaItems() {
  * @param {string} id - ID do item a ser removido.
  */
 function removerItem(id) {
+    const usuario = obterUsuarioAtual();
+    const items = carregarItems();
+    const itemAlvo = items.find(function (item) { return item.id === id; });
+
+    // Segurança: só permite remover se o item pertence ao usuário atual
+    if (!itemAlvo || !usuario || itemAlvo.doadorId !== usuario.id) {
+        exibirMensagem('Você não tem permissão para remover este material.', 'erro');
+        return;
+    }
+
     const confirmar = window.confirm('Tem certeza que deseja remover este material?');
     if (!confirmar) return;
 
-    let items = carregarItems();
-    items = items.filter(function (item) { return item.id !== id; });
-    salvarItems(items);
+    const itemsAtualizados = items.filter(function (item) { return item.id !== id; });
+    salvarItems(itemsAtualizados);
 
     renderizarListaItems();
     exibirMensagem('Material removido com sucesso!', 'sucesso');
@@ -295,6 +326,9 @@ formulario.addEventListener('submit', async function (evento) {
         return;
     }
 
+    // Recupera dados do usuário logado para vincular ao item
+    const usuarioAtual = obterUsuarioAtual();
+
     // Monta o objeto do item de doação
     const novoItem = {
         id:             gerarId(),
@@ -305,6 +339,10 @@ formulario.addEventListener('submit', async function (evento) {
         cidade:         cidade,
         foto:           imagemBase64 || '',
         dataPublicacao: new Date().toISOString().slice(0, 10),
+        // Vínculo com o usuário logado
+        doadorId:  usuarioAtual ? usuarioAtual.id       : null,
+        doador:    usuarioAtual ? usuarioAtual.nome      : 'Doador MATERY',
+        telefone:  usuarioAtual ? usuarioAtual.telefone  : '',
     };
 
     // Salva no LocalStorage

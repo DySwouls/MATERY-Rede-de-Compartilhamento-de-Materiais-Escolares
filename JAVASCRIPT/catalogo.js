@@ -151,7 +151,8 @@ function carregarMateriaisSalvos() {
                         doador: item.doador || item.nomeDoador || item.responsavel || "Doador MATERY",
                         data: item.data || item.dataPublicacao || item.criadoEm || new Date().toISOString().slice(0, 10),
                         descricao: item.descricao || item.observacao || "Material cadastrado pela comunidade.",
-                        foto: item.foto || ''
+                        foto: item.foto || '',
+                        telefone: item.telefone || ''
                     });
                 });
             }
