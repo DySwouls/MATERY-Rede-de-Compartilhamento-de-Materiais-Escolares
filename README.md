@@ -1,6 +1,6 @@
 # 📚 MATERY - Rede de Compartilhamento de Materiais Escolares
 
-> **Status do Projeto:** 🛠️ Protótipo Inicial / Em Desenvolvimento
+> **Status do Projeto:** 🛠️ Protótipo Inicial
 
 O **MATERY** é uma plataforma web que conecta estudantes que desejam doar materiais escolares a alunos que necessitam desses recursos. O projeto promove a reutilização, colaboração e o acesso à educação por meio do compartilhamento de livros, apostilas e materiais acadêmicos, alinhando-se à **ODS 17**.
 
