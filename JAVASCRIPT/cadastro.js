@@ -5,6 +5,7 @@ const formularioCadastro = document.querySelector("#form-cadastro");
 const mensagemCadastro = document.querySelector("#mensagem-cadastro");
 const campoTelefone = document.querySelector("#telefone");
 const campoEmail = document.querySelector("#email");
+const linkLogin = document.querySelector("#link-login");
 
 function carregarUsuarios() {
     try {
@@ -44,6 +45,26 @@ function formatarTelefone(valor) {
     }
 
     return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
+}
+
+function obterDestinoSeguro() {
+    const parametros = new URLSearchParams(window.location.search);
+    const redirect = parametros.get("redirect");
+
+    if (!redirect) {
+        return "catalogo.html";
+    }
+
+    const destinoLimpo = redirect.replace(/^\.?\//, "");
+    const destinoPermitido = /^[a-z0-9_-]+\.html(?:#[a-z0-9_-]+)?$/i.test(destinoLimpo);
+
+    return destinoPermitido ? destinoLimpo : "catalogo.html";
+}
+
+const destinoAposCadastro = obterDestinoSeguro();
+
+if (linkLogin) {
+    linkLogin.href = `login.html?redirect=${encodeURIComponent(destinoAposCadastro)}`;
 }
 
 campoTelefone.addEventListener("input", () => {
@@ -128,10 +149,10 @@ formularioCadastro.addEventListener("submit", (evento) => {
 
     localStorage.setItem(CHAVE_USUARIO_ATUAL, JSON.stringify(usuarioAtual));
 
-    exibirMensagem("Cadastro criado com sucesso. Redirecionando para o catálogo...", "sucesso");
+    exibirMensagem("Cadastro criado com sucesso. Redirecionando...", "sucesso");
     formularioCadastro.reset();
 
     setTimeout(() => {
-        window.location.href = "catalogo.html";
+        window.location.href = destinoAposCadastro;
     }, 1000);
 });
