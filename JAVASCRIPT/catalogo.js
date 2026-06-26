@@ -10,7 +10,7 @@ const materiaisBase = [
         telefone: "+55 62 98123-4567",
         data: "2026-06-18",
         descricao: "Livro com exercícios resolvidos e pequenos sinais de uso nas bordas.",
-        foto: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80"
+        foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvzxQrOtYlPoR7X1ZK7-SIX5DdxrdrUvWzql0TOPKrbw&s=10"
     },
     {
         id: "apostila-enem",
@@ -36,7 +36,7 @@ const materiaisBase = [
         telefone: "+55 62 98888-7766",
         data: "2026-06-12",
         descricao: "Mochila resistente, com dois compartimentos e zíper funcionando.",
-        foto: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&q=80"
+        foto: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80"
     },
     {
         id: "cadernos-universitarios",
@@ -49,7 +49,7 @@ const materiaisBase = [
         telefone: "+55 62 99777-6655",
         data: "2026-06-22",
         descricao: "Três cadernos sem uso, com 10 matérias cada.",
-        foto: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=500&q=80"
+        foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxGzp8JBnSHMCYy2X2nSvmVgmEyn0jhU9K0R9qOqnEUA&s=10"
     },
     {
         id: "livro-portugues",
@@ -75,7 +75,7 @@ const materiaisBase = [
         telefone: "+55 62 99333-2211",
         data: "2026-06-10",
         descricao: "Estojo simples com canetas azuis, lápis, borracha e apontador.",
-        foto: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=80"
+        foto: "https://m.media-amazon.com/images/I/71qaEl30vyL._AC_UY1000_.jpg"
     }
 ];
 
