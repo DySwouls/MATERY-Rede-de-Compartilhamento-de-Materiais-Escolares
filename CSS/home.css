@@ -1,68 +1,121 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Estilos específicos da landing page (baseado em global.css) */
 
-Body {
-    font-family: Arial, sans-serif;
-    background-color: #52525b;
-    color: #333;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    text-align: center;
-    background: #222;
-}
-
-
-header h2 {
-    margin: 0;
-    color: white;
-}
-
-section {
-    padding: 20px;
-    text-align: center;
-}
-
-.hero{
-    text-align: center;
+.hero {
+    position: relative;
+    background-position: center;
+    background-size: cover;
     min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
 }
 
-    /* Estilo básico para os botões */
-    button {
-        display: inline-block; /* Faz os botões ficarem lado a lado */
-        padding: 10px 20px;
-        margin-right: 0; /* Espaço entre os botões */
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+.hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2,6,23,0.45) 0%, rgba(2,6,23,0.6) 100%);
+}
 
-    .btn:hover {
-        background-color: #0056b3; /* Cor ao passar o mouse */
-    }
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    padding: 4rem 2rem;
+}
 
-/* Estilo para as caixas de texto */
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.hero-content .lead {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.95);
+}
+
+.hero-cta a {
+    margin-right: 12px;
+    text-decoration: none;
+}
+
+/* galeria removida */
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card figcaption {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+}
+
+/* Ajustes de seções já existentes para combinar com landing */
 .texto-caixa {
     background-color: #ffffff;
-    border: 2px solid #007BFF;
-    padding: 20px;
-    margin: 20px auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    max-width: 90%;
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+    margin: 1.25rem 0;
 }
 
-.texto-caixa p {
-    color: #333;
-    line-height: 1.6;
+/* Responsividade */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 2.25rem; }
+}
+
+@media (max-width: 600px) {
+    .hero-content { padding: 3rem 1rem; }
+    .hero-content h1 { font-size: 1.8rem; }
+}
+
+/* Pequeno ajuste para botões internos já definidos no global.css */
+.botao-acesso a, .olhar.catalogo a { color: inherit; text-decoration: none; }
+
+/* Garante contraste do rodapé quando a imagem de fundo é clara */
+.rodape { padding-top: 2rem; }
+
+/* Layout para seções em split (imagem + texto) */
+.split-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 0;
+}
+
+.split-section .media {
+    flex: 1 1 45%;
+}
+
+.split-section .media img {
+    width: 100%;
+    height: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.split-section .content {
+    flex: 1 1 55%;
+}
+
+.split-section.right-image { flex-direction: row-reverse; }
+
+@media (max-width: 900px) {
+    .split-section { flex-direction: column; text-align: left; }
+    .split-section .media img { max-height: 260px; }
 }
